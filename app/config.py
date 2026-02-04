@@ -1,4 +1,4 @@
-API_KEY = "sk_test_123456789"
+API_KEY = "memesrock123"
 
 SUPPORTED_LANGUAGES = [
     "Tamil",
