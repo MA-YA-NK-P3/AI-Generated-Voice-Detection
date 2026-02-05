@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Header, Form
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, RedirectResponse
 from pydantic import BaseModel
 import base64
 import logging
@@ -10,6 +10,10 @@ from app.model_loader import predict
 
 logger = logging.getLogger("uvicorn.error")
 app = FastAPI(title="AI Generated Voice Detection API")
+
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse("/docs#/default/detect_voice_api_voice_detection_post")
 
 class VoiceRequest(BaseModel):
     language: str

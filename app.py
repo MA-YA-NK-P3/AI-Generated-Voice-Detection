@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Header, HTTPException
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 import base64
 import tempfile
@@ -36,6 +37,13 @@ class VoiceRequest(BaseModel):
     language: str
     audioFormat: str
     audioBase64: str
+
+# ======================
+# ROOT -> REDIRECT TO DOCS ✅
+# ======================
+@app.get("/", include_in_schema=False)
+def root():
+    return RedirectResponse("/docs#/default/detect_voice_api_voice_detection_post")
 
 # ======================
 # HEALTH CHECK
