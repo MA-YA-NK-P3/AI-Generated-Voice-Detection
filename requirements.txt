@@ -10,3 +10,4 @@ soundfile
 numpy
 torch
 pydantic
+httpx
